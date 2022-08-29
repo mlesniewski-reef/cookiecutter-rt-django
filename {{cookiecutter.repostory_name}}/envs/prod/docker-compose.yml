@@ -48,8 +48,8 @@ services:
       - ./media:/root/src/media
       {% if cookiecutter.monitoring == 'y' %}
       # If another container is using prometheus metrics, it should dump it's metrics to a subdirectory of the host dir,
-      # e.g `- ./prometheus-multiproc-dir/other_container:/prometheus-multiproc-dir` - all containers should use
-      # separate subdirs
+      # e.g `- ./prometheus-multiproc-dir/other_container:/prometheus-multiproc-dir` - each container should use a
+      # separate subdir and clean it up on startup
       - ./prometheus-multiproc-dir:/prometheus-multiproc-dir
       {% endif %}
     links:
